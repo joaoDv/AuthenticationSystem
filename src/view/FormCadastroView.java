@@ -19,6 +19,7 @@ import model.Usuario;
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JToggleButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -108,6 +109,8 @@ public class FormCadastroView extends JFrame {
 					Connection conexao = new Conexao().getConnection();
 					UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
 					usuarioDao.insert(usuarioXande);
+					
+					JOptionPane.showMessageDialog(null, "Usuario Salvo Com Sucesso");
 				} catch (SQLException e1) {
 
 					e1.printStackTrace();
