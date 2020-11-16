@@ -31,10 +31,11 @@ import javax.swing.JButton;
 public class FormCadastroView extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JPasswordField passwordField;
+	private JTextField textFieldId;
+	private JTextField textFieldUsuario;
+	private JPasswordField passwordFieldSenha;
 	private JButton btnNewButton;
+	private JTextField textFieldTipoUsuario;
 
 	/**
 	 * Launch the application.
@@ -57,44 +58,51 @@ public class FormCadastroView extends JFrame {
 	 */
 	public FormCadastroView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 542, 436);
+		setBounds(100, 100, 797, 439);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(141, 63, 82, 30);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		textFieldId = new JTextField();
+		textFieldId.setBounds(68, 53, 82, 30);
+		contentPane.add(textFieldId);
+		textFieldId.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(141, 126, 227, 30);
-		contentPane.add(textField_1);
+		textFieldUsuario = new JTextField();
+		textFieldUsuario.setColumns(10);
+		textFieldUsuario.setBounds(205, 53, 227, 30);
+		contentPane.add(textFieldUsuario);
 		
 		JLabel lblNewLabel = new JLabel("ID");
-		lblNewLabel.setBounds(147, 40, 45, 13);
+		lblNewLabel.setBounds(92, 30, 45, 13);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblUsurio = new JLabel("Usu\u00E1rio");
-		lblUsurio.setBounds(141, 103, 45, 13);
+		lblUsurio.setBounds(295, 30, 45, 13);
 		contentPane.add(lblUsurio);
 		
 		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setBounds(141, 163, 45, 13);
+		lblSenha.setBounds(351, 103, 45, 13);
 		contentPane.add(lblSenha);
 		
 
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(141, 186, 227, 35);
-		contentPane.add(passwordField);
+		passwordFieldSenha = new JPasswordField();
+		passwordFieldSenha.setBounds(271, 133, 227, 35);
+		contentPane.add(passwordFieldSenha);
 		
 		btnNewButton = new JButton("Salvar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Usuario usuarioXande = new Usuario("Xande", "132456", "Visitante");
+				
+				String usuario = textFieldUsuario.getText();
+				String senha = passwordFieldSenha.getText();
+				String tipoDeUsuario = textFieldTipoUsuario.getText();				
+				
+				Usuario usuarioXande = new Usuario(usuario, senha, tipoDeUsuario);
+				
+				
 				
 				try {
 					Connection conexao = new Conexao().getConnection();
@@ -107,8 +115,17 @@ public class FormCadastroView extends JFrame {
 				
 			}
 		});
-		btnNewButton.setBounds(204, 246, 85, 21);
+		btnNewButton.setBounds(205, 218, 85, 21);
 		contentPane.add(btnNewButton);
+		
+		textFieldTipoUsuario = new JTextField();
+		textFieldTipoUsuario.setColumns(10);
+		textFieldTipoUsuario.setBounds(10, 136, 227, 30);
+		contentPane.add(textFieldTipoUsuario);
+		
+		JLabel lblTipoDeUsurio = new JLabel("Tipo de Usu\u00E1rio");
+		lblTipoDeUsurio.setBounds(68, 103, 82, 13);
+		contentPane.add(lblTipoDeUsurio);
 		
 
 	}
