@@ -27,14 +27,14 @@ public class FormCadastroController {
 		String tipoDeUsuario = view.getTextFieldTipoUsuario().getText();
 					
 		
-		Usuario usuarioXande = new Usuario(usuario, senha, tipoDeUsuario);
+		Usuario usuarioGeral = new Usuario(usuario, senha, tipoDeUsuario);
 		
 		
 		
 		try {
 			Connection conexao = new Conexao().getConnection();
 			UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
-			usuarioDao.insert(usuarioXande);
+			usuarioDao.insert(usuarioGeral);
 			
 			JOptionPane.showMessageDialog(null, "Usuario Salvo Com Sucesso");
 		} catch (SQLException e1) {
@@ -43,4 +43,6 @@ public class FormCadastroController {
 		}
 		
 	}
+	
+
 }

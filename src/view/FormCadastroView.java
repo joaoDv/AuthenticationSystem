@@ -29,6 +29,8 @@ import java.sql.SQLException;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class FormCadastroView extends JFrame {
 
@@ -62,56 +64,63 @@ public class FormCadastroView extends JFrame {
 	public FormCadastroView() {
 		controller = new FormCadastroController(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 797, 439);
+		setBounds(100, 100, 659, 516);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		textFieldId = new JTextField();
-		textFieldId.setBounds(68, 53, 82, 30);
+		textFieldId.setBounds(283, 43, 82, 30);
 		contentPane.add(textFieldId);
 		textFieldId.setColumns(10);
 		
 		textFieldUsuario = new JTextField();
 		textFieldUsuario.setColumns(10);
-		textFieldUsuario.setBounds(205, 53, 227, 30);
+		textFieldUsuario.setBounds(206, 107, 227, 30);
 		contentPane.add(textFieldUsuario);
 		
 		JLabel lblNewLabel = new JLabel("ID");
-		lblNewLabel.setBounds(92, 30, 45, 13);
+		lblNewLabel.setForeground(Color.BLACK);
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel.setBounds(317, 23, 45, 13);
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblUsurio = new JLabel("Usu\u00E1rio");
-		lblUsurio.setBounds(295, 30, 45, 13);
+		lblUsurio.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblUsurio.setBounds(295, 84, 127, 13);
 		contentPane.add(lblUsurio);
 		
 		JLabel lblSenha = new JLabel("Senha");
-		lblSenha.setBounds(351, 103, 45, 13);
+		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblSenha.setBounds(295, 153, 45, 13);
 		contentPane.add(lblSenha);
 		
 
 		
 		passwordFieldSenha = new JPasswordField();
-		passwordFieldSenha.setBounds(271, 133, 227, 35);
+		passwordFieldSenha.setBounds(206, 176, 227, 35);
 		contentPane.add(passwordFieldSenha);
 		
 		btnNewButton = new JButton("Salvar");
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				controller.salvaUsuario();
 			}
 		});
-		btnNewButton.setBounds(205, 218, 85, 21);
+		btnNewButton.setBounds(269, 296, 85, 21);
 		contentPane.add(btnNewButton);
 		
 		textFieldTipoUsuario = new JTextField();
 		textFieldTipoUsuario.setColumns(10);
-		textFieldTipoUsuario.setBounds(10, 136, 227, 30);
+		textFieldTipoUsuario.setBounds(206, 243, 227, 30);
 		contentPane.add(textFieldTipoUsuario);
 		
 		JLabel lblTipoDeUsurio = new JLabel("Tipo de Usu\u00E1rio");
-		lblTipoDeUsurio.setBounds(68, 103, 82, 13);
+		lblTipoDeUsurio.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblTipoDeUsurio.setBounds(269, 220, 127, 13);
 		contentPane.add(lblTipoDeUsurio);
 		
 
