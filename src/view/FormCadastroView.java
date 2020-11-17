@@ -12,6 +12,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
+import controller.FormCadastroController;
 import dao.Conexao;
 import dao.UsuarioDAO;
 import model.Usuario;
@@ -37,6 +38,7 @@ public class FormCadastroView extends JFrame {
 	private JPasswordField passwordFieldSenha;
 	private JButton btnNewButton;
 	private JTextField textFieldTipoUsuario;
+	private FormCadastroController controller;
 
 	/**
 	 * Launch the application.
@@ -58,6 +60,7 @@ public class FormCadastroView extends JFrame {
 	 * Create the frame.
 	 */
 	public FormCadastroView() {
+		controller = new FormCadastroController(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 797, 439);
 		contentPane = new JPanel();
@@ -96,26 +99,7 @@ public class FormCadastroView extends JFrame {
 		btnNewButton = new JButton("Salvar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				String usuario = textFieldUsuario.getText();
-				String senha = passwordFieldSenha.getText();
-				String tipoDeUsuario = textFieldTipoUsuario.getText();				
-				
-				Usuario usuarioXande = new Usuario(usuario, senha, tipoDeUsuario);
-				
-				
-				
-				try {
-					Connection conexao = new Conexao().getConnection();
-					UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
-					usuarioDao.insert(usuarioXande);
-					
-					JOptionPane.showMessageDialog(null, "Usuario Salvo Com Sucesso");
-				} catch (SQLException e1) {
-
-					e1.printStackTrace();
-				}
-				
+				controller.salvaUsuario();
 			}
 		});
 		btnNewButton.setBounds(205, 218, 85, 21);
@@ -131,5 +115,37 @@ public class FormCadastroView extends JFrame {
 		contentPane.add(lblTipoDeUsurio);
 		
 
+	}
+
+	public JTextField getTextFieldId() {
+		return textFieldId;
+	}
+
+	public void setTextFieldId(JTextField textFieldId) {
+		this.textFieldId = textFieldId;
+	}
+
+	public JTextField getTextFieldUsuario() {
+		return textFieldUsuario;
+	}
+
+	public void setTextFieldUsuario(JTextField textFieldUsuario) {
+		this.textFieldUsuario = textFieldUsuario;
+	}
+
+	public JPasswordField getPasswordFieldSenha() {
+		return passwordFieldSenha;
+	}
+
+	public void setPasswordFieldSenha(JPasswordField passwordFieldSenha) {
+		this.passwordFieldSenha = passwordFieldSenha;
+	}
+
+	public JTextField getTextFieldTipoUsuario() {
+		return textFieldTipoUsuario;
+	}
+
+	public void setTextFieldTipoUsuario(JTextField textFieldTipoUsuario) {
+		this.textFieldTipoUsuario = textFieldTipoUsuario;
 	}
 }
